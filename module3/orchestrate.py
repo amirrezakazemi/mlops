@@ -15,7 +15,7 @@ import os
 @task(retries=3, retry_delay_seconds=2, name="Read taxi data")
 def read_data(filename: str) -> pd.DataFrame:
     """Read data into DataFrame"""
-    print(os.get_cwd())
+    print(os.getcwd())
     df = pd.read_parquet(filename)
 
     df.lpep_dropoff_datetime = pd.to_datetime(df.lpep_dropoff_datetime)
