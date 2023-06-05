@@ -155,7 +155,7 @@ def main_flow(
 
     credentials = EmailServerCredentials(
         username="kazemiamir76@gmial.com",
-        password="bcsoqubvtpagmgks",  # must be an app password
+        password="wogxjjjytzgxttck",  # must be an app password
     )
     credentials.save("prefect-email")
     email_server_credentials = EmailServerCredentials.load("prefect-email")
