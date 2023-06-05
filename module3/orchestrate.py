@@ -157,7 +157,7 @@ def main_flow(
         username="kazemiamir76@gmial.com",
         password="wogxjjjytzgxttck",  # must be an app password
     )
-    credentials.save("prefect-email")
+    credentials.save("prefect-email", overwrite=True)
     email_server_credentials = EmailServerCredentials.load("prefect-email")
     context = get_run_context()
     flow_run_name = context.flow_run.name
