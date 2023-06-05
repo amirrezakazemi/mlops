@@ -164,7 +164,7 @@ def main_flow(
     email_send_message(
         email_server_credentials=email_server_credentials,
         subject=f"Flow run {flow_run_name!r} Successful",
-        msg="Hello"
+        msg="Hello",
         email_to=email_server_credentials.username,
     )
 
