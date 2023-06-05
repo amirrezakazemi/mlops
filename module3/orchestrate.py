@@ -11,6 +11,8 @@ import xgboost as xgb
 from prefect import flow, task
 from prefect.artifacts import create_markdown_artifact
 from datetime import date
+from prefect_email import EmailServerCredentials, email_send_message
+from prefect.context import get_run_context
 
 
 @task(retries=3, retry_delay_seconds=2, name="Read taxi data")
@@ -150,6 +152,20 @@ def main_flow(
 
     # Train
     train_best_model(X_train, X_val, y_train, y_val, dv)
+
+    credentials = EmailServerCredentials(
+        username="kazemiamir76@gmial.com",
+        password="bcsoqubvtpagmgks",  # must be an app password
+    )
+    credentials.save("prefect_email")
+    email_server_credentials = EmailServerCredentials.load("email-server-credentials")
+    context = get_run_context()
+    flow_run_name = context.flow_run.name
+    email_send_message(
+        email_server_credentials=email_server_credentials,
+        subject=f"Flow run {flow_run_name!r} failed",
+        email_to=email_server_credentials.username,
+    )
 
 
 if __name__ == "__main__":
