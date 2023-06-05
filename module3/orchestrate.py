@@ -163,7 +163,8 @@ def main_flow(
     flow_run_name = context.flow_run.name
     email_send_message(
         email_server_credentials=email_server_credentials,
-        subject=f"Flow run {flow_run_name!r} failed",
+        subject=f"Flow run {flow_run_name!r} Successful",
+        msg="Hello"
         email_to=email_server_credentials.username,
     )
 
