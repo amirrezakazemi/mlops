@@ -154,7 +154,7 @@ def main_flow(
     train_best_model(X_train, X_val, y_train, y_val, dv)
 
     credentials = EmailServerCredentials(
-        username="kazemiamir76@gmial.com",
+        username="kazemiamir76@gmail.com",
         password="wogxjjjytzgxttck",  # must be an app password
     )
     credentials.save("prefect-email", overwrite=True)
